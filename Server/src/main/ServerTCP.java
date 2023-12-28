@@ -45,7 +45,6 @@ public class ServerTCP {
 			// Ubacivanje predefinisanih kartica u HashMap
 
 			listaNaloga = ucitajNaloge("nalozi.txt");
-			listaTransakcija = ucitajTransakcije("transakcije.txt");
 
 			while (true) {
 				Socket clientSocket = serverSocket.accept();
@@ -399,6 +398,7 @@ public class ServerTCP {
 	public static void ispisi10Transakcija(BufferedReader reader, PrintWriter writer) {
 		
 		int brElemenata;
+		listaTransakcija = ucitajTransakcije("transakcije.txt");
 		if(listaTransakcija.size() < 10) {
 			 brElemenata = listaTransakcija.size();
 		} else {
@@ -406,7 +406,7 @@ public class ServerTCP {
 		}
 		//U slucaju da postoji manje od 10 elemenata, prikazace se taj broj
 		//Ako postoji 10 ili vise elemenata, uvek ce se prikazati samo 10
-		
+		System.out.println(brElemenata);
 		writer.println(brElemenata);
 		for(int i = 0; i < brElemenata; i++) {
 				writer.println(listaTransakcija.get(i));
